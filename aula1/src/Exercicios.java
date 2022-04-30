@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Exercicios {
 
     public static void main(String[] args) {
-        exe06();
+        exe08();
     }
 
     public static void exe01() {
@@ -98,5 +98,32 @@ public class Exercicios {
 
     }
 
+    public static void exe07() {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Informe o custo de fábrica do automóvel: ");
+        double custoFabrica = in.nextDouble();
+
+        double custoFinal = custoFabrica + ((custoFabrica*28)/100) + ((custoFabrica*45)/100);
+
+        System.out.printf("Custo final: R$%.2f", custoFinal);
+    }
+
+    public static void exe08() {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Salário fixo: ");
+        double salFixo = in.nextDouble();
+        System.out.print("Carros vendidos: ");
+        int carrosVendidos = in.nextInt();
+        System.out.println("Comissão fixa por carro vendido: ");
+        double comFixa = in.nextDouble();
+        System.out.println("Valor total das vendas: ");
+        double valorVendas = in.nextDouble();
+
+        double comFixaPorCarro = comFixa * carrosVendidos;
+        double percentual = (valorVendas * 5)/100;
+        double salFinal = salFixo + comFixaPorCarro + percentual;
+
+        System.out.printf("Salário final: R$%.2f", salFinal);
+    }
 
 }
