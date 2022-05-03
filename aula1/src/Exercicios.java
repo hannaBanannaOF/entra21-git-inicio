@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Exercicios {
 
     public static void main(String[] args) {
-        exe08();
+        exe10();
     }
 
     public static void exe01() {
@@ -126,4 +126,24 @@ public class Exercicios {
         System.out.printf("Salário final: R$%.2f", salFinal);
     }
 
+    public static void exe09() {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Informe a temperatura (F): ");
+        double tempF = in.nextDouble();
+        double tempC = ((tempF-32)*5)/9;
+        System.out.printf("Temperatura em Celsius: %.2f", tempC);
+    }
+
+    public static void exe10() {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Informe a primeira nota: ");
+        double nota1 = in.nextDouble();
+        System.out.print("Informe a segunda nota: ");
+        double nota2 = in.nextDouble();
+        System.out.print("Informe a terceira nota: ");
+        double nota3 = in.nextDouble();
+
+        double media = ((nota1 * 2)+(nota2 * 3)+(nota3 * 5))/10;
+        System.out.printf("Média final: %.2f", media);
+    }
 }
