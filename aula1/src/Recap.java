@@ -179,5 +179,42 @@ public class Recap {
         }
 
         System.out.println(var3.substring(5, 8));
+
+        int[] numeros = {0,1,2,3,4,5,6,7,8,9}; //iniciando uma lista com valores
+        int[] numeros2 = new int[10]; // iniciando lista vazia
+
+        System.out.println(numeros[6]); //recuperando um valor da lista
+        numeros2[4] = in.nextInt(); //inserindo um valor no array
+        System.out.println(numeros.length); //pegando a quantidade de itens
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.println(numeros[i]);
+        }
+
+        int[][] numers3 = {{0,1,2,3,4},{5,6,7,8,9}}; //iniciando uma matriz com valores
+        int[][] numers4 = new int[2][5]; //iniciando matriz sem valores
+        System.out.println(numers3[0][2]); //recuperando um valor de uma matriz
+        numers4[1] = new int[]{7, 8, 9, 0}; //inserindo uma lista em uma linha da matriz
+        numers4[0][0] = 9; //inserindo dados em uma posição da matriz
+
+        System.out.println(numers3.length); //numero de linhas da matriz
+        System.out.println(numers3[0].length); // quantidade de itens na linha da matriz
+
+        for (int i = 0; i < numers3.length; i++) {
+            for (int j = 0; j < numers3[i].length; j++){
+                System.out.println(numers3[i][j]);
+            }
+        }
+
+        int[][] mapa = {
+                {0,0,0,0,0,0,1,1},
+                {1,0,0,0,1,0,0,0},
+                {1,0,0,0,1,0,0,0},
+                {0,0,0,0,1,0,0,0},
+                {0,0,0,0,0,0,0,0},
+                {0,0,0,0,0,0,0,0},
+                {1,1,1,1,1,0,0,0},
+                {0,0,0,0,0,0,1,1}
+        };
+
     }
 }
