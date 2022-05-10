@@ -42,6 +42,7 @@ public class Recap {
         System.out.println(qtde);
     }
 
+    //MORTE AO LIGHT MODE
     public static void text() {
         // inteiros
         int var1 = 10;
@@ -61,9 +62,10 @@ public class Recap {
 
         // entrada - entrada de usuário PELO CONSOLE
         Scanner in = new Scanner(System.in);
-        in.next(); // espera o usuário digitar, pega tudo o que foi digitado
+        in.next(); // espera o usuário digitar, pega um único caractere do que foi digitado
         in.nextInt(); // espera o usuário digitar, pega valores inteiros
         in.nextDouble(); // espera o usuário digitar, pega valores decimais
+        in.nextLine(); //retorna tudo o que tiver digitado, e avança o cursor
 
         //operações aritméticas
         var1 = 10 + 10; // soma
