@@ -4,6 +4,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+
+        MinhaClasse novoObjeto = new MinhaClasseDerivada();
+        novoObjeto.metodo();
+
+        novoObjeto = new MinhaClasseDerivada2();
+        novoObjeto.metodo();
+
         Scanner in = new Scanner(System.in);
         System.out.println("-MENU: Escolha uma opção-");
         System.out.println("(1) - X-Salada");
