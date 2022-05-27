@@ -4,14 +4,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
-
-        MinhaClasse novoObjeto = new MinhaClasseDerivada();
-        novoObjeto.metodo();
-
-        novoObjeto = new MinhaClasseDerivada2();
-        novoObjeto.metodo();
-
         Scanner in = new Scanner(System.in);
         System.out.println("-MENU: Escolha uma opção-");
         System.out.println("(1) - X-Salada");
@@ -20,6 +12,7 @@ public class Main {
         System.out.println("(4) - Hot Dog");
         System.out.println("(5) - Mini Pizza - Calabresa");
         int escolha = in.nextInt();
+        in.nextLine();
         Lanche lanche = null;
         switch (escolha) {
             case 1:
@@ -40,14 +33,27 @@ public class Main {
             default:
                 System.err.println("Escolha uma opção válida!");
         }
-        if (escolha == 1 || escolha == 2) {
-            System.out.println("Lanche aberto? (S/N)");
-            in.nextLine();
-            String aberto = in.nextLine();
-            ((XBurguer) lanche).aberto = aberto.equalsIgnoreCase("S");
-        } else if (escolha == 5) {
+        if (lanche instanceof Sanduiche) {
+            System.out.println("Deseja adicionais? (S/N)");
+            String adiconais = in.nextLine();
+            if (adiconais.equalsIgnoreCase("S")) {
+                for(int i = 0; i < 10; i++) {
+                    System.out.print("Informe o adicional: ");
+                    ((Sanduiche) lanche).adicionarAdicional(in.nextLine());
+                    System.out.println("Deseja adicionar mais adicionais? (S/N)");
+                    String parada = in.nextLine();
+                    if (parada.equalsIgnoreCase("N")) {
+                        break;
+                    }
+                }
+            }
+            if (lanche instanceof XBurguer) {
+                System.out.println("Lanche aberto? (S/N)");
+                String aberto = in.nextLine();
+                ((XBurguer) lanche).aberto = aberto.equalsIgnoreCase("S");
+            }
+        } else {
             System.out.println("Com borda recheada? (S/N)");
-            in.nextLine();
             String aberto = in.nextLine();
             MiniPizza miniPizza = ((MiniPizza) lanche);
             miniPizza.bordaRecheada = aberto.equalsIgnoreCase("S");

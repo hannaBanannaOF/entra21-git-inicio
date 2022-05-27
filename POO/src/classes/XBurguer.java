@@ -3,8 +3,7 @@ package classes;
 
 
 
-public class XBurguer extends Lanche{
-
+public class XBurguer extends Sanduiche{
 
     public boolean aberto;
 
