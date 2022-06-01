@@ -1,10 +1,14 @@
-import classes.*;
+import classes.lanches.*;
 
 import java.util.Scanner;
 
 public class Main {
+    public static Scanner in = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+        montarLanche();
+    }
+
+    private static void montarLanche() {
         System.out.println("-MENU: Escolha uma opção-");
         System.out.println("(1) - X-Salada");
         System.out.println("(2) - X-Burguer");

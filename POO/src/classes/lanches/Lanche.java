@@ -1,4 +1,4 @@
-package classes;
+package classes.lanches;
 
 public abstract class Lanche {
     public String[] ingredientes = new String[10];
