@@ -58,7 +58,7 @@ public class Main {
             if (lanche instanceof XBurguer) {
                 System.out.println("Lanche aberto? (S/N)");
                 String aberto = in.nextLine();
-                ((XBurguer) lanche).aberto = aberto.equalsIgnoreCase("S");
+                ((XBurguer) lanche).setAberto(aberto.equalsIgnoreCase("S"));
             }
         } else {
             System.out.println("Escolha o sabor da pizza:");
@@ -108,9 +108,8 @@ public class Main {
                 miniPizza.setSaborBorda(in.nextLine());
             }
         }
-        System.out.print("Informe o valor do(a) "+lanche.tipo+": R$");
-        lanche.valor = in.nextDouble();
-        lanche.montarComanda();
+        System.out.print("Informe o valor do(a) "+lanche.getTipo()+": R$");
+        lanche.setValor(in.nextDouble());
     }
 }
 
