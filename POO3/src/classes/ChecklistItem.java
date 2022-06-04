@@ -2,16 +2,14 @@ package classes;
 
 import java.util.UUID;
 
-public class Tarefa {
+public class ChecklistItem {
     private String uuid;
     private String nome;
     private String descricao;
     private boolean completa;
     private int ordem;
 
-    private ChecklistItem[] checklist;
-
-    public Tarefa() {
+    public ChecklistItem() {
         this.setUuid(UUID.randomUUID().toString());
     }
 
@@ -59,13 +57,5 @@ public class Tarefa {
 
     public void setOrdem(int ordem) {
         this.ordem = ordem;
-    }
-
-    public ChecklistItem[] getChecklist() {
-        return checklist;
-    }
-
-    public void setChecklist(ChecklistItem[] checklist) {
-        this.checklist = checklist;
     }
 }
