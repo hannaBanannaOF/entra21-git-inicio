@@ -9,11 +9,8 @@ public class Main {
         Cliente cl = new Cliente();
         System.out.print("Insira o nome do cliente: ");
         cl.setNome(in.nextLine());
-        for (int i = 0; i < 10; i++){
+        while (true){
             cl.getPedido().adicionarLanche(montarLanche());
-            if (i == 9) {
-                break;
-            }
             System.out.println("Deseja mais um lanche? (S/N)");
             if(in.nextLine().equalsIgnoreCase("N")) {
                 break;

@@ -1,37 +1,27 @@
 package classes.lanches;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public abstract class Sanduiche extends Lanche{
 
-    private String[] adicionais = new String[10];
+    private ArrayList<String> adicionais = new ArrayList<>();
 
     public void adicionarAdicional(String adicional) {
-        for (int i = 0; i < 10; i++) {
-            if(this.adicionais[i] == null) {
-                this.adicionais[i] = adicional;
-                break;
-            }
-        }
+        this.adicionais.add(adicional);
     }
 
-    public String[] getAdicionais() {
+    public ArrayList<String> getAdicionais() {
         return adicionais;
-    }
-
-    public void setAdicionais(String[] adicionais) {
-        this.adicionais = adicionais;
     }
 
     @Override
     public void mostrarDetalhesComanda() {
         System.out.println("====" + this.getTipo() + "====");
-        if (this.getAdicionais()[0] != null) {
+        if (!this.adicionais.isEmpty()) {
             System.out.println("-ADICIONAIS-");
             for (String adicional : this.getAdicionais()) {
-                if (adicional != null) {
-                    System.out.println(adicional);
-                }
+                System.out.println(adicional);
             }
         }
     }
