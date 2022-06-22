@@ -43,7 +43,7 @@ public class Main {
                     encontrado = true;
                     System.out.printf("Valor da venda: R$%.2f. Deseja efetuar venda (S/N)? ", c.getValor());
                     if (in.nextLine().equalsIgnoreCase("S")) {
-                        System.out.printf("Carro %s da marca %s vendido por R$%.2f!\n", marca, c.getModelo(), c.getValor());
+                        System.out.printf("Carro %s da marca %s vendido por R$%.2f!\n", c.getModelo(), marca, c.getValor());
                         carrosMarca.remove(i);
                         if (carrosMarca.isEmpty()) {
                             carros.remove(marca.toLowerCase());
