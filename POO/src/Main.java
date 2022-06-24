@@ -1,6 +1,7 @@
 import classes.cliente.Cliente;
 import classes.lanches.*;
 
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class Main {
