@@ -13,14 +13,33 @@ public class Onibus implements MeioTransporte{
         this.assentos = assentos;
     }
 
+    public Onibus(int linhasCadeiras) {
+        for(int i = 1; i <= 4*linhasCadeiras; i++) {
+            AssentoOnibus a = new AssentoOnibus();
+            a.setLugar(String.valueOf(i));
+            assentos.add(a);
+        }
+    }
+
     @Override
     public boolean verificaOcupacao(String assento) {
+        for (AssentoOnibus a : this.assentos) {
+            if (a.getLugar().equalsIgnoreCase(assento)) {
+                return a.isOcupado();
+            }
+        }
         return false;
     }
 
     @Override
     public int quantidadeLivre() {
-        return 0;
+        int assentosLivres = 0;
+        for (AssentoOnibus a : this.assentos) {
+            if (!a.isOcupado()) {
+                assentosLivres++;
+            }
+        }
+        return assentosLivres;
     }
 
     @Override
@@ -30,6 +49,11 @@ public class Onibus implements MeioTransporte{
 
     @Override
     public Assento getAssento(String assento) {
+        for (AssentoOnibus a : this.assentos) {
+            if (a.getLugar().equalsIgnoreCase(assento)) {
+                return a;
+            }
+        }
         return null;
     }
 }
