@@ -1,9 +1,18 @@
+import classes.Aviao;
+import classes.Onibus;
 import classes.Voo;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Onibus o = new Onibus(7);
+        o.mostrarAssentos();
+        System.out.println();
+        Aviao a = new Aviao(3, 6);
+        a.mostrarAssentos();
+    }
+    public static void main2(String[] args) {
         Scanner in = new Scanner(System.in);
         int linhas = 0, col = 0;
         while (true) {

@@ -13,6 +13,28 @@ public class Aviao implements MeioTransporte{
         this.assentos = assentos;
     }
 
+    public Aviao(int linhasCadeirasLuxo, int linhasCadeirasEconomicas) {
+        String codigoAssentos = "ABCD";
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < linhasCadeirasLuxo; j++) {
+                AssentoVoo a = new AssentoVoo();
+                a.setCodigo(String.valueOf(codigoAssentos.charAt(i))+j);
+                a.setClasse(ClasseAssentoVoo.LUXO);
+                assentos.add(a);
+            }
+        }
+        codigoAssentos = "ABCDEF";
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < linhasCadeirasEconomicas; j++) {
+                AssentoVoo a = new AssentoVoo();
+                a.setCodigo(String.valueOf(codigoAssentos.charAt(i))+j);
+                a.setClasse(ClasseAssentoVoo.ECONOMICA);
+                assentos.add(a);
+            }
+        }
+    }
+
+
     @Override
     public boolean verificaOcupacao(String assento) {
         for (AssentoVoo a : this.assentos) {
@@ -36,7 +58,15 @@ public class Aviao implements MeioTransporte{
 
     @Override
     public void mostrarAssentos() {
-
+        ArrayList<AssentoVoo> luxo = new ArrayList<>();
+        ArrayList<AssentoVoo> economica = new ArrayList<>();
+        for (AssentoVoo a : this.assentos) {
+            if (ClasseAssentoVoo.LUXO.equals(a.getClasse())) {
+                luxo.add(a);
+            } else {
+                economica.add(a);
+            }
+        }
     }
 
     @Override
@@ -49,10 +79,10 @@ public class Aviao implements MeioTransporte{
         return null;
     }
 
-    public Assento getAssento(String assento, String classe) {
+    public Assento getAssento(String assento, ClasseAssentoVoo classe) {
         for (AssentoVoo a : this.assentos) {
             if (a.getCodigo().equalsIgnoreCase(assento)
-                && a.getClasse().equalsIgnoreCase(classe)) {
+                && a.getClasse().equals(classe)) {
                 return a;
             }
         }
