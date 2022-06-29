@@ -1,3 +1,4 @@
+import classes.EMenu;
 import classes.avaliacao.Avaliacao;
 import classes.guardados.Estante;
 import classes.itens.DVD;
@@ -13,35 +14,35 @@ public class Main {
         Estante e = new Estante(5);
         boolean loop = true;
         while (loop) {
-            int opcao = escolherOpcao();
+            EMenu opcao = escolherOpcao();
             switch (opcao) {
-                case 0: loop = false;
+                case SAIR: loop = false;
                     break;
-                case 1: adicionarItem(e);
+                case ADICIONAR_ITEM: adicionarItem(e);
                     break;
-                case 2: buscarItemETratarRetorno(e);
+                case BUSCAR_ITEM: buscarItemETratarRetorno(e);
                     break;
-                case 3: removerItem(e);
+                case REMOVER_ITEM: removerItem(e);
                     break;
-                case 4: mostarItens(e);
+                case MOSTRAR_ITENS: mostarItens(e);
                     break;
+                default:
+                    System.out.println("Opção não implementada!");
             }
         }
         System.out.println("Programa finalizado!");
     }
 
-    public static int escolherOpcao() {
-        int escolha = -1;
-        while (escolha < 0 || escolha > 4) {
+    public static EMenu escolherOpcao() {
+        EMenu escolha = null;
+        while (escolha == null) {
             System.out.println("Selecione uma opção");
-            System.out.println("(1) - Adicionar item na estante");
-            System.out.println("(2) - Buscar item na estante");
-            System.out.println("(3) - Remover item da estante");
-            System.out.println("(4) - Ver itens na estante");
-            System.out.println("(0) - Sair");
-            escolha = in.nextInt();
+            for (EMenu menu : EMenu.values()) {
+                System.out.printf("(%d) - %s\n", menu.getValorOpcao(), menu.getDescricao());
+            }
+            escolha = EMenu.getByValorOpcao(in.nextInt());
             in.nextLine();
-            if (escolha < 0 || escolha > 4) {
+            if (escolha == null) {
                 System.err.println("Selecione uma opção válida!");
             }
         }
