@@ -1,9 +1,17 @@
 EQ1 - Maria, Felipe , Marlon
+
 EQ2 - Larissa, Eduardo, André F
+
 EQ3 - Julia, Thais, Cristian
+
 EQ4 - Nathan, William, Samuel = Comparador de preços
-EQ5 - Maykon, João, André S
+
+EQ5 - Maykon, João, André S = Venda de ingresso / Avaliação - CINEMA
+
 EQ6 - Gabriela, Eder, Luan = EaD / Diário online
+
 EQ7 - Ana, Débora, Geovane
-EQ8 - Matheus, Riciéri, Marlon
+
+EQ8 - Matheus, Riciéri, Murilo
+
 EQ9 - Hadra, Gieovani = Petshop / Veterinário
