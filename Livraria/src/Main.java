@@ -174,7 +174,7 @@ public class Main {
             System.out.println("Estante vazia!");
         } else {
             for (int i = 0; i < e.getCapMaxima(); i++) {
-                Item item = e.getItens()[i];
+                Item item = e.getItens().get(i);
                 if (item != null) {
                     System.out.println("[" + i + "] " + item.getTitulo() + " (" + item.getGenero() + ")");
                 }

@@ -2,13 +2,15 @@ package classes.guardados;
 
 import classes.itens.Item;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
 public class Estante {
     private int capMaxima;
-    private Item[] itens;
+    private ArrayList<Item> itens = new ArrayList<>();
 
     public Estante(int capMaxima) {
         setCapMaxima(capMaxima);
-        setItens(new Item[capMaxima]);
     }
 
     public boolean estanteCheia() {
@@ -16,39 +18,24 @@ public class Estante {
     }
 
     public int quantidadeItens() {
-        int contador = 0;
-        for (Item i : this.getItens()) {
-            if (i != null) {
-                contador ++;
-            }
-        }
-        return contador;
+        return this.itens.size();
     }
 
     public Item buscarItem(String titulo) {
-        for (Item i : this.getItens()) {
-            if (i != null && i.getTitulo().toLowerCase().contains(titulo.toLowerCase())) {
-                return i;
-            }
-        }
-        return null;
+        return this.itens.stream().filter(i -> i.getTitulo().equalsIgnoreCase(titulo))
+                .findFirst().orElse(null);
     }
 
 
     public boolean adicionarItem(Item item) {
-        for (int i = 0; i < this.getItens().length; i++) {
-            if( this.getItens()[i] == null ) {
-                this.getItens()[i] = item;
-                return true;
-            }
+        if (!estanteCheia()) {
+            return this.itens.add(item);
         }
         return false;
     }
 
     public Item removerItem(int posicao) {
-        Item i = this.getItens()[posicao];
-        this.getItens()[posicao] = null;
-        return i;
+        return this.itens.remove(posicao);
     }
 
     // GETTERS & SETTERS
@@ -61,11 +48,11 @@ public class Estante {
         this.capMaxima = capMaxima;
     }
 
-    public Item[] getItens() {
+    public ArrayList<Item> getItens() {
         return itens;
     }
 
-    public void setItens(Item[] itens) {
+    public void setItens(ArrayList<Item> itens) {
         this.itens = itens;
     }
 }
