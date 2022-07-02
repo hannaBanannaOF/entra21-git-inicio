@@ -1,8 +1,8 @@
-EQ1 - Maria, Felipe , Marlon
+EQ1 - Maria, Felipe , Marlon = Transportadora
 
-EQ2 - Larissa, Eduardo, André F
+EQ2 - Larissa, Eduardo, André F = RPG
 
-EQ3 - Julia, Thais, Cristian
+EQ3 - Julia, Thais, Cristian = Sugestão de viagem
 
 EQ4 - Nathan, William, Samuel = Querovaga
 
@@ -10,8 +10,8 @@ EQ5 - Maykon, João, André S = Venda de ingresso / Avaliação - CINEMA
 
 EQ6 - Gabriela, Eder, Luan = EaD / Diário online
 
-EQ7 - Ana, Débora, Geovane
+EQ7 - Ana, Débora, Geovane = Prestação de serviços
 
-EQ8 - Matheus, Riciéri, Murilo
+EQ8 - Matheus, Riciéri, Murilo = controle de despesas
 
 EQ9 - Hadra, Gieovani = Petshop / Veterinário
