@@ -5,8 +5,8 @@ public enum EMenu implements IMenu{
     ADICIONAR_ITEM(1, "Adicionar item a estante"),
     BUSCAR_ITEM(2, "Buscar item"),
     REMOVER_ITEM(3, "Remover item da estante"),
-    MOSTRAR_ITENS(4, "Mostar itens na estante");
-
+    MOSTRAR_ITENS(4, "Mostar itens na estante"),
+    ADICIONAR_ESTANTE(5, "Adicionar estante");
     private int valorOpcao;
     private String descricao;
     EMenu(int valor, String descricao) {
