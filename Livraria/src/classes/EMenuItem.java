@@ -19,7 +19,7 @@ public enum EMenuItem implements IMenu{
                 return e;
             }
         }
-        return null;
+        throw new RuntimeException();
     }
     public int getValorOpcao() {
         return this.valorOpcao;

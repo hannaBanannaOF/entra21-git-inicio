@@ -6,9 +6,11 @@ import classes.guardados.Estante;
 import classes.itens.DVD;
 import classes.itens.Item;
 import classes.itens.Livro;
+import org.jetbrains.annotations.NotNull;
 
+import java.time.format.DateTimeFormatter;
+import java.util.InputMismatchException;
 import java.util.Scanner;
-
 public class Main {
     public static Scanner in = new Scanner(System.in);
 
@@ -17,17 +19,25 @@ public class Main {
     public static void main(String[] args) {
         boolean loop = true;
         while (loop) {
-            EMenu opcao = (EMenu) escolherOpcao(null);
-            switch (opcao) {
-                case SAIR -> loop = false;
-                case ADICIONAR_ITEM -> adicionarItem();
-                case BUSCAR_ITEM -> buscarItemETratarRetorno();
-                case REMOVER_ITEM -> removerItem();
-                case MOSTRAR_ITENS -> mostarItens();
-                case ADICIONAR_ESTANTE -> adicionarEstante();
-                default -> System.out.println("Opção não implementada!");
+            try {
+                EMenu opcao = (EMenu) escolherOpcao(null);
+                switch (opcao) {
+                    case SAIR -> loop = false;
+                    case ADICIONAR_ITEM -> adicionarItem();
+                    case BUSCAR_ITEM -> buscarItemETratarRetorno();
+                    case REMOVER_ITEM -> removerItem();
+                    case MOSTRAR_ITENS -> mostarItens();
+                    case ADICIONAR_ESTANTE -> adicionarEstante();
+                    default -> System.out.println("Opção não implementada!");
+                }
+                System.out.println();
+            } catch (Exception e) {
+                if (in.hasNext()) {
+                    in.nextLine();
+                }
+                System.out.println("Aconteceu algum problema!");
+                e.printStackTrace();
             }
-            System.out.println();
         }
         System.out.println("Programa finalizado!");
     }
@@ -48,32 +58,27 @@ public class Main {
     }
 
     public static IMenu escolherOpcao(Item item) {
-        IMenu escolha = null;
-        while (escolha == null) {
-            if (item != null) {
-                while (escolha == null) {
-                    System.out.println(item.getTitulo()+ " encontrado! Ações disponíveis: ");
-                    for(EMenuItem i : EMenuItem.values()) {
+        while (true) {
+            try {
+                if (item != null) {
+                    System.out.println(item.getTitulo() + " encontrado! Ações disponíveis: ");
+                    for (EMenuItem i : EMenuItem.values()) {
                         System.out.printf("(%d) %s\n", i.getValorOpcao(), i.getDescricao());
                     }
-                    escolha = EMenuItem.getByValorOpcao(in.nextInt());
-                    if (escolha == null) {
-                        System.err.println("Selecione uma opção válida");
+                    return EMenuItem.getByValorOpcao(in.nextInt());
+                } else {
+                    System.out.println("Selecione uma opção");
+                    for (EMenu menu : EMenu.values()) {
+                        System.out.printf("(%d) - %s\n", menu.getValorOpcao(), menu.getDescricao());
                     }
+                    return EMenu.getByValorOpcao(in.nextInt());
                 }
-            } else {
-                System.out.println("Selecione uma opção");
-                for (EMenu menu : EMenu.values()) {
-                    System.out.printf("(%d) - %s\n", menu.getValorOpcao(), menu.getDescricao());
-                }
-                escolha = EMenu.getByValorOpcao(in.nextInt());
-            }
-            in.nextLine();
-            if (escolha == null) {
-                System.err.println("Selecione uma opção válida!");
+            } catch(RuntimeException e) {
+                System.out.println("Selecione uma opção válida!");
+            } finally {
+                in.nextLine();
             }
         }
-        return escolha;
     }
 
     // Adicionar item na estante
@@ -85,7 +90,7 @@ public class Main {
             if (e.estanteCheia()) {
                 System.err.println("Sua estante está cheia! Não é possível adicionar mais itens!");
             } else {
-                Item i = null;
+                Item i;
                 int escolha = -1;
                 while (escolha < 0 || escolha > 1) {
                     System.out.print("Informe o item que deseja adicionar (0 - Livro / 1 - DVD): ");
@@ -162,10 +167,11 @@ public class Main {
         return e;
     }
 
-    public static void mostarAvaliacoes(Item i) {
+    public static void mostarAvaliacoes(@NotNull Item i) {
         i.getAvaliacoes().forEach(a -> {
             System.out.println("Autor: "+a.getNome());
-            System.out.println("avaliação: "+a.getRating());
+            System.out.println(a.getDataAvaliacao().format(DateTimeFormatter.ofPattern("'Data da avaliação: 'dd/MM/yyyy HH:mm:ss'\n'")));
+            System.out.println("Avaliação: "+a.getRating());
             System.out.println("Comentário: ");
             System.out.println(a.getFeedback());
             System.out.println("--------------------");

@@ -2,13 +2,29 @@ package classes.pedido;
 
 import classes.lanches.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Pedido {
 
     private ArrayList<Lanche> lanches = new ArrayList<>();
+    private LocalDateTime dataPedido = LocalDateTime.now();
+
+    public void setLanches(ArrayList<Lanche> lanches) {
+        this.lanches = lanches;
+    }
+
+    public LocalDateTime getDataPedido() {
+        return dataPedido;
+    }
+
+    public void setDataPedido(LocalDateTime dataPedido) {
+        this.dataPedido = dataPedido;
+    }
 
     public void imprimirComanda() {
+        System.out.println("Data do pedido: "+dataPedido.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")));
         for (Lanche l : this.getLanches()) {
             l.mostrarDetalhesComanda();
             System.out.println("-INGREDIENTES-");

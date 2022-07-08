@@ -1,9 +1,9 @@
 package classes.guardados;
 
 import classes.itens.Item;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class Estante {
     private int capMaxima;
@@ -21,7 +21,7 @@ public class Estante {
         return this.itens.size();
     }
 
-    public Item buscarItem(String titulo) {
+    public @Nullable Item buscarItem(String titulo) {
         return this.itens.stream().filter(i -> i.getTitulo().equalsIgnoreCase(titulo))
                 .findFirst().orElse(null);
     }
