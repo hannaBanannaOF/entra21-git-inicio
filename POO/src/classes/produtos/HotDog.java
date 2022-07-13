@@ -1,6 +1,6 @@
 package classes.lanches;
 
-public class HotDog extends Sanduiche{
+public class HotDog extends Complementable {
 
     public HotDog() {
         this.adicionarIngrediente("Pão");
@@ -11,6 +11,6 @@ public class HotDog extends Sanduiche{
         this.adicionarIngrediente("Queijo Cheddar");
         this.adicionarIngrediente("Milho");
         this.adicionarIngrediente("Ervilha");
-        this.setTipo("Hot Dog");
+        this.setTipo(ETipoProduto.HOTDOG);
     }
 }

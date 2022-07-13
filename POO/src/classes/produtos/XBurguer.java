@@ -2,15 +2,11 @@ package classes.lanches;
 
 import java.util.Scanner;
 
-public class XBurguer extends Sanduiche{
+public class XBurguer extends MistoQuente {
     private boolean aberto;
-
     public XBurguer() {
         this.adicionarIngrediente("Hamburguer");
-        this.adicionarIngrediente("Queijunto");
-        this.adicionarIngrediente("Preijo");
-        this.adicionarIngrediente("Pão");
-        this.setTipo("XBurguer");
+        this.setTipo(ETipoProduto.XBURGUER);
     }
 
     public boolean isAberto() {

@@ -6,7 +6,7 @@ public class Pizza extends MiniPizza{
     private String tamanho;
 
     public Pizza() {
-        this.setTipo("Pizza");
+        this.setTipo(ETipoProduto.PIZZA);
     }
 
     public void setTamanho(String tamanho) {
