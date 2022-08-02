@@ -1,4 +1,6 @@
-package classes.lanches;
+package classes.produtos;
+
+import classes.ConsoleHelper;
 
 import java.util.Scanner;
 
@@ -26,10 +28,9 @@ public class XBurguer extends MistoQuente {
     }
 
     @Override
-    public void montarDetalhesLanche(Scanner in) {
-        super.montarDetalhesLanche(in);
-        System.out.println("Lanche aberto? (S/N)");
-        String aberto = in.nextLine();
-        this.setAberto(aberto.equalsIgnoreCase("S"));
+    public void montarDetalhesProduto(Scanner in) {
+        super.montarDetalhesProduto(in);
+        System.out.println();
+        this.setAberto("S".equalsIgnoreCase(ConsoleHelper.returnYesNoValidOption("Lanche aberto? (S/N)", in)));
     }
 }

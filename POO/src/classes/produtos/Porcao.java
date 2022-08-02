@@ -5,32 +5,38 @@ import classes.ConsoleHelper;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Pizza extends MiniPizza{
+public class Porcao extends Complementable {
+
+    private String tipoPorcao;
     private ETamanho tamanho;
 
-    public Pizza() {
-        this.setTipo(ETipoProduto.PIZZA);
+    public Porcao() {
+        this.setTipo(ETipoProduto.PORCAO);
+    }
+
+    public String getTipoPorcao() {
+        return tipoPorcao;
+    }
+
+    public void setTipoPorcao(String tipoPorcao) {
+        this.tipoPorcao = tipoPorcao;
+    }
+
+    public ETamanho getTamanho() {
+        return tamanho;
     }
 
     public void setTamanho(ETamanho tamanho) {
         this.tamanho = tamanho;
     }
 
-    public ETamanho getTamanho() {
-        return this.tamanho;
-    }
-
-    @Override
-    public void mostrarDetalhesComanda() {
-        super.mostrarDetalhesComanda();
-        System.out.println("Tamanho: " + this.getTamanho());
-    }
-
     @Override
     public void montarDetalhesProduto(Scanner in) {
         super.montarDetalhesProduto(in);
+        System.out.print("Porção de: ");
+        setTipoPorcao(in.nextLine());
         while (true) {
-            System.out.println("Tamanho da pizza: ");
+            System.out.println("Tamanho da porção: ");
             for (ETamanho tam : ETamanho.values()) {
                 System.out.printf("(%d) %s\n", tam.getOpcao(), tam.getNomeApresentavel());
             }

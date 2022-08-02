@@ -1,6 +1,6 @@
 package classes.pedido;
 
-import classes.lanches.*;
+import classes.produtos.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -8,11 +8,11 @@ import java.util.ArrayList;
 
 public class Pedido {
 
-    private ArrayList<Lanche> lanches = new ArrayList<>();
+    private ArrayList<ItemPedido> itens = new ArrayList<>();
     private LocalDateTime dataPedido = LocalDateTime.now();
 
-    public void setLanches(ArrayList<Lanche> lanches) {
-        this.lanches = lanches;
+    public void setLanches(ArrayList<ItemPedido> itens) {
+        this.itens = itens;
     }
 
     public LocalDateTime getDataPedido() {
@@ -25,13 +25,9 @@ public class Pedido {
 
     public void imprimirComanda() {
         System.out.println("Data do pedido: "+dataPedido.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")));
-        for (Lanche l : this.getLanches()) {
-            l.mostrarDetalhesComanda();
-            System.out.println("-INGREDIENTES-");
-            for (String ingrediente : l.getIngredientes()) {
-                System.out.println(ingrediente);
-            }
-            System.out.printf("Valor: R$%.2f\n", l.getValor());
+        for (ItemPedido l : this.getItensPedido()) {
+            l.getProduto().mostrarDetalhesComanda();
+            System.out.printf("Valor: R$%.2f\n", l.getProduto().getValor());
         }
         System.out.printf("Valor total do pedido: R$%.2f\n", this.calcularValorTotal());
         System.out.println("------------------------------------");
@@ -39,17 +35,17 @@ public class Pedido {
 
     public double calcularValorTotal() {
         double vlrTotal = 0;
-        for (Lanche l : this.getLanches()) {
-            vlrTotal += l.getValor();
+        for (ItemPedido l : this.getItensPedido()) {
+            vlrTotal += l.getValorUnitario();
         }
         return vlrTotal;
     }
 
-    public void adicionarLanche(Lanche lanche) {
-        this.lanches.add(lanche);
+    public void adicionarItemPedido(ItemPedido item) {
+        this.itens.add(item);
     }
 
-    public ArrayList<Lanche> getLanches() {
-        return this.lanches;
+    public ArrayList<ItemPedido> getItensPedido() {
+        return this.itens;
     }
 }

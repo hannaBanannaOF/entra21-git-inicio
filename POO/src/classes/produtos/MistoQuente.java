@@ -1,4 +1,4 @@
-package classes.lanches;
+package classes.produtos;
 
 public class MistoQuente extends Complementable {
     

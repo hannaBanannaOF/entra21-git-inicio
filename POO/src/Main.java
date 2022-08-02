@@ -1,7 +1,6 @@
 import classes.cliente.Cliente;
-import classes.lanches.*;
+import classes.produtos.*;
 
-import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -50,7 +49,7 @@ public class Main {
                 default -> System.out.println("Escolha uma opção válida!");
             }
         }
-        lanche.montarDetalhesLanche(in);
+        lanche.montarDetalhesProduto(in);
         System.out.print("Informe o valor do(a) "+lanche.getTipo()+": R$");
         lanche.setValor(in.nextDouble());
         in.nextLine();

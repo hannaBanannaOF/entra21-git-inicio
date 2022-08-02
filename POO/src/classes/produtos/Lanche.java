@@ -1,20 +1,23 @@
-package classes.lanches;
+package classes.produtos;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public abstract class Lanche extends Produto {
-    private ArrayList<String> ingredientes = new ArrayList<>();
+    private final ArrayList<String> ingredientes = new ArrayList<>();
 
     public void adicionarIngrediente(String ingrediente) {
         this.ingredientes.add(ingrediente);
     }
 
-    public abstract void mostrarDetalhesComanda();
-
-    public abstract void montarDetalhesLanche(Scanner in);
-
     public ArrayList<String> getIngredientes() {
         return ingredientes;
+    }
+
+    @Override
+    public void mostrarDetalhesComanda() {
+        System.out.println("-INGREDIENTES-");
+        for (String ingrediente : this.getIngredientes()) {
+            System.out.println(ingrediente);
+        }
     }
 }

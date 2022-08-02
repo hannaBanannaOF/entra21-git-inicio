@@ -1,11 +1,14 @@
-package classes.lanches;
+package classes.produtos;
+
+import classes.ConsoleHelper;
 
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public abstract class Complementable extends Lanche{
 
-    private HashMap<String, Double> adicionais = new HashMap<>();
+    private final HashMap<String, Double> adicionais = new HashMap<>();
 
     public void adicionarAdicional(String adicional, double valor) {
         this.adicionais.put(adicional, valor);
@@ -17,7 +20,7 @@ public abstract class Complementable extends Lanche{
 
     @Override
     public void mostrarDetalhesComanda() {
-        System.out.println("====" + this.getTipo() + "====");
+        super.mostrarDetalhesComanda();
         if (!this.adicionais.isEmpty()) {
             System.out.println("-ADICIONAIS-");
             for (String adicional : this.getAdicionais().keySet()) {
@@ -27,20 +30,32 @@ public abstract class Complementable extends Lanche{
     }
 
     @Override
-    public void montarDetalhesLanche(Scanner in) {
+    public void montarDetalhesProduto(Scanner in) {
         System.out.println("Deseja adicionais? (S/N)");
         String adiconais = in.nextLine();
         if (adiconais.equalsIgnoreCase("S")) {
-            for(int i = 0; i < 10; i++) {
+            while (true) {
                 System.out.print("Informe o adicional: ");
-                String nomeAdicional = in.nextLine();
-                System.out.print("Informe o valor do adicional: R$");
-                this.adicionarAdicional(nomeAdicional, in.nextDouble());
-                in.nextLine();
-                System.out.println("Deseja adicionar mais adicionais? (S/N)");
-                String parada = in.nextLine();
-                if (parada.equalsIgnoreCase("N")) {
-                    break;
+                String nomeAdicional = in.nextLine().toLowerCase();
+                if (!nomeAdicional.isEmpty() && !nomeAdicional.isBlank()) {
+                    if (this.adicionais.containsKey(nomeAdicional)) {
+                        if ("N".equalsIgnoreCase(ConsoleHelper.returnYesNoValidOption("Adicional já existe no lanche, deseja atualizar o valor? (S/N)", in))) {
+                            continue;
+                        }
+                    }
+                    try {
+                        System.out.print("Informe o valor do adicional: R$");
+                        this.adicionarAdicional(nomeAdicional, in.nextDouble());
+                    } catch (InputMismatchException e) {
+                        ConsoleHelper.showError("Selecione uma opção válida");
+                    } finally {
+                        in.nextLine();
+                    }
+                    if ("N".equalsIgnoreCase(ConsoleHelper.returnYesNoValidOption("Deseja adicionar mais adicionais? (S/N)", in))) {
+                        break;
+                    }
+                } else {
+                    ConsoleHelper.showError("O nome do adicional não pode ser vazio!");
                 }
             }
         }
