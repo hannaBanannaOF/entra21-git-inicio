@@ -10,7 +10,7 @@ EQ5 - Maykon, João, André S = Venda de ingresso / Avaliação - CINEMA
 
 EQ6 - Gabriela, Eder, Luan = EaD / Diário online
 
-EQ7 - Ana, Débora, Geovane = Prestação de serviços
+EQ7 - Ana, Débora, Geovane = voluntários
 
 EQ8 - Matheus, Riciéri, Murilo = Controle de despesas
 

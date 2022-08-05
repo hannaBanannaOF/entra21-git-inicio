@@ -1,0 +1,32 @@
+body {
+    background-color: #f1f1f1;
+}
+
+/* p {
+    color: red;
+    margin-top: 0;
+}
+
+#par-gr {
+    color: green;
+}
+
+.white-txt {
+    color: blue!important;
+} */
+
+table {
+    border: 1px solid black;
+    width: 100%;
+    border-spacing: 0;
+}
+
+th {
+    text-align: start;
+    background-color: #b3b3b3;
+    padding: 8px 4px;
+}
+
+* {
+    font-family: 'Poppins';
+}
