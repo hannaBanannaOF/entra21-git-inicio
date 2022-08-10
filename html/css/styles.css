@@ -1,4 +1,4 @@
-body {
+html, body {
     background-color: #f1f1f1;
 }
 
@@ -69,14 +69,30 @@ small {
 ul.navlist {
     list-style-type: none;
     text-align: center;
+    padding: 0;
+}
+
+ul.navlist li {
+    display: inline;
 }
 
 .text-center {
     text-align: center;
 }
 
-ul.navlist li {
-    display: inline;
+div#titulos .header {
+    margin-bottom: 24px;
+    font-size: 3em;
+}
+
+.card {
+    background-color: #f8f8f8;
+    box-shadow: 0px 8px 20px -8px #000000;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 32px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 * {
@@ -95,4 +111,17 @@ ul.navlist li {
     80%{box-shadow: 0px 0px 20px 10px orange;}
     70%{box-shadow: 0px 0px 20px 10px rgb(255, 0, 43);}
     100%{box-shadow: 0px 0px 20px 10px green;}
+}
+
+@media only screen and (max-width: 600px) {
+    /* html, body {
+        background-color: darkseagreen;
+    } */
+    ul.navlist {
+        margin: 0 48px;
+    }
+
+    ul.navlist li a {
+        display: block;
+    }
 }
