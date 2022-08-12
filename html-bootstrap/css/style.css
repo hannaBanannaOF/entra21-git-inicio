@@ -8,7 +8,81 @@ html, body {
     background-color: rgb(94, 170, 170)!important;
 }
 
-div.footer {
+footer {
     padding: 24px;
     background-color: rgb(139, 139, 139);
+}
+
+a.mylink {
+    font-size: 20px;
+    font-style: italic;
+}
+
+footer div div.section {
+    border-left: 1px solid rgba(255,255,255,0.25);
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+fieldset.login-card {
+    border: 1px solid rgb(74, 155, 155);
+    margin-left: 25%;
+    margin-right: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 8px;
+    padding: 12px;
+}
+
+fieldset.login-card input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid rgb(94, 170, 170);
+}
+
+fieldset.login-card input:focus, fieldset.login-card input:focus-visible {
+    outline: transparent;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid rgb(74, 155, 155);
+    box-shadow: none;
+}
+
+fieldset.login-card input[type="submit"] {
+    margin-top: 16px;
+    background-color: rgb(94, 170, 170);
+    padding: 8px 16px;
+    border-radius: 12px;
+}
+
+fieldset.login-card input[type="submit"]:hover {
+    background-color: rgb(74, 155, 155);
+}
+
+fieldset.login-card legend {
+    float: initial;
+    width: fit-content;
+    padding: 0 4px;
+    margin-left: 4px;
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 576px) {
+
+    footer div div.section {
+        border-left: 0;
+        padding: 0;
+        margin-bottom: 24px;
+    }
+
+    footer div:last-child div.section {
+        margin-bottom: 0;
+    }
+
+    fieldset.login-card {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
 }
