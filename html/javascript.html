@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="css/styles.css">    
+    <script type="text/javascript">
+        function submitMsg() {
+            let msg = document.getElementById("input-txt").value;
+            document.getElementById("input-txt").value = "";
+
+            let p = document.createElement("p");
+            p.textContent = msg;
+
+            document.getElementById("texto").appendChild(p);
+        }
+
+        document.onreadystatechange = () => {
+            if(document.readyState === 'complete') {
+                document.getElementById("input-txt")
+                    .addEventListener("keydown", function(e) {
+                        if(e.key === "Enter" || e.keyValue === 13) {
+                            submitMsg();
+                        }
+                    });
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="texto"></div>
+    <input type="text" name="teste" id="input-txt">
+    <button onclick="submitMsg()">Enviar</button>
+    
+</body>
+</html>

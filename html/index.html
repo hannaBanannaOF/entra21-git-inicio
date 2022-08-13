@@ -11,6 +11,18 @@
             content="width=device-width, initial-scale=1.0">
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
         <link rel="stylesheet" href="css/styles.css">    
+        <script type="text/javascript">
+            function load() {
+                let guess = Math.floor(Math.random() * 11);
+                console.log(guess);
+                let userInput = -1;
+                while(guess != userInput) {
+                    userInput = prompt("Take a whild guess: ");
+                }
+            }
+
+            window.onload = load;
+        </script>
     </head>
     <body>
         <div class="text-center">
@@ -44,6 +56,8 @@
             <li>
                 <a href="brincando.html">Lol</a>
             </li>
+            <li><a href="javascript.html">Javascripto</a></li>
         </ul>
+        <button>Contar</button>
     </body>
 </html>
