@@ -10,8 +10,16 @@ html, body {
     width: 40%;
 }
 
+.w-30 {
+    width: 30%;
+}
+
 .edit-cell {
     text-align: center;
+}
+
+.edit-cell button {
+    display: inline-block;
 }
 
 .edit-cell a, ul.navlist li a {
@@ -93,6 +101,50 @@ div#titulos .header {
     margin-bottom: 32px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.btn {
+    border: 0;
+    background-color: transparent;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.btn.btn-success {
+    background-color: rgb(75, 191, 75);
+}
+
+.btn.btn-success:hover {
+    background-color: rgb(100, 220, 100);
+}
+
+.btn.btn-success:active {
+    background-color: rgb(54, 153, 54);
+}
+
+.btn.btn-warning {
+    background-color: rgb(228, 209, 62);
+}
+
+.btn.btn-warning:hover {
+    background-color: rgb(247, 227, 77);
+}
+
+.btn.btn-warning:active {
+    background-color: rgb(179, 163, 43);
+}
+
+.btn.btn-danger {
+    background-color: rgb(228, 62, 62);
+}
+
+.btn.btn-danger:hover {
+    background-color: rgb(247, 77, 77);
+}
+
+.btn.btn-danger:active {
+    background-color: rgb(179, 43, 43);
 }
 
 * {

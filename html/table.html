@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,19 +7,60 @@
     <title>Document</title>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript">
+        
+        var lanches = [];
+
+        function onAdd() {
+            let nome = prompt("Informe o nome do lanche");
+            let valor = Number(prompt(`Informe o valor de ${nome}`));
+            let lanche = {
+                "nome": nome,
+                "valor": valor
+            };
+            lanches.push(lanche);
+            tableLoad();
+        }
+
+
+        function tableLoad() {
+            let tableBody = document.getElementById("tabela").getElementsByTagName("tbody")[0];
+            tableBody.innerHTML = lanches.map((lanche) => {
+                return `
+                    <tr>
+                        <td class="w-40">${lanche.nome}</td>
+                        <td class="w-40">${lanche.valor}</td>
+                        <td class="edit-cell">
+                            <button class="btn btn-warning" onclick="onAlter()">Alterar</button>
+                            <button class="btn btn-danger" onclick="onDelete()">Excluir</button>
+                        </td>
+                    </tr>
+                `;
+            }).join("");
+        }
+
+        function onAlter() {
+            alert("Alterar UwU");
+        }
+
+        function onDelete() {
+            alert("Excluir UwU")
+        }
+
+    </script>
 </head>
 <body>
     <div id="tabelas">
-        <table>
-            <caption><h3>Monthly savings</h3></caption>
+        <table class="contained" id="tabela">
+            <caption><h3>Vendinha UwU</h3></caption>
             <thead>
                 <tr>
-                    <th class="w-50">Month</th>
-                    <th colspan="2">Savings</th>
+                    <th class="w-40">Lanche</th>
+                    <th colspan="2">Valor</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <!-- <tr>
                     <td class="w-50">January</td>
                     <td class="w-40">$100</td>
                     <td class="edit-cell"><a href="#">View</a></td>
@@ -28,11 +69,13 @@
                     <td class="w-50">February</td>
                     <td class="w-40">$80</td>
                     <td class="edit-cell"><a href="#">View</a></td>
-                </tr>
+                </tr> -->
             </tbody>
             <tfoot>
                 <tr class="sum">
-                    <td colspan="3"><small>Sum: $180</small></td>
+                    <td colspan="3">
+                        <button class="btn btn-success" onclick="onAdd()">Adicionar</button>
+                    </td>
                 </tr>
             </tfoot>
         </table>
