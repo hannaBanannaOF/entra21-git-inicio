@@ -10,15 +10,18 @@
     <script type="text/javascript">
         
         var lanches = [];
+        var id_seq = 1;
 
         function onAdd() {
             let nome = prompt("Informe o nome do lanche");
             let valor = Number(prompt(`Informe o valor de ${nome}`));
             let lanche = {
+                "id": id_seq,
                 "nome": nome,
                 "valor": valor
             };
             lanches.push(lanche);
+            id_seq++;
             tableLoad();
         }
 
@@ -28,23 +31,58 @@
             tableBody.innerHTML = lanches.map((lanche) => {
                 return `
                     <tr>
-                        <td class="w-40">${lanche.nome}</td>
-                        <td class="w-40">${lanche.valor}</td>
-                        <td class="edit-cell">
-                            <button class="btn btn-warning" onclick="onAlter()">Alterar</button>
-                            <button class="btn btn-danger" onclick="onDelete()">Excluir</button>
+                        <td class="w-40" id="lanche-${lanche.id}-nome">${lanche.nome}</td>
+                        <td class="w-40" id="lanche-${lanche.id}-valor">${lanche.valor}</td>
+                        <td class="edit-cell" id="lanche-${lanche.id}-crud">
+                            <button class="btn btn-warning" onclick="onAlter(${lanche.id})">Alterar</button>
+                            <button class="btn btn-danger" onclick="onDelete(${lanche.id})">Excluir</button>
+                        </td>
+                        <td class="edit-cell" style="display: none;" id="lanche-${lanche.id}-save">
+                            <button class="btn btn-success" onclick="onSave(${lanche.id})">Salvar</button>
+                            <button class="btn btn-danger" onclick="onCancel(${lanche.id})">Cancelar</button>
                         </td>
                     </tr>
                 `;
             }).join("");
         }
 
-        function onAlter() {
-            alert("Alterar UwU");
+        function onCancel(id) {
+            let lanche = lanches.find(lanche => lanche.id === id);
+            document.getElementById(`lanche-${lanche.id}-nome`).innerHTML = `${lanche.nome}`;
+            document.getElementById(`lanche-${lanche.id}-valor`).innerHTML = `${lanche.valor}`;
+            document.getElementById(`lanche-${lanche.id}-crud`).style = "";
+            document.getElementById(`lanche-${lanche.id}-save`).style = "display: none;";
         }
 
-        function onDelete() {
-            alert("Excluir UwU")
+        function onSave(id) {
+            let lanche = lanches.find(lanche => lanche.id === id);
+            lanche.nome = document.getElementById(`input-lanche-${lanche.id}-nome`).value;
+            document.getElementById(`lanche-${lanche.id}-nome`).innerHTML = `${lanche.nome}`;
+            lanche.valor = document.getElementById(`input-lanche-${lanche.id}-valor`).value;
+            document.getElementById(`lanche-${lanche.id}-valor`).innerHTML = `${lanche.valor}`;
+            document.getElementById(`lanche-${lanche.id}-crud`).style = "";
+            document.getElementById(`lanche-${lanche.id}-save`).style = "display: none;";
+        }
+
+        function onAlter(id) {
+            let lanche = lanches.find(lanche => lanche.id === id);
+            document.getElementById(`lanche-${lanche.id}-nome`).innerHTML = `
+                <input type="text" id="input-lanche-${lanche.id}-nome" value="${lanche.nome}" />
+            `;
+            document.getElementById(`lanche-${lanche.id}-valor`).innerHTML = `
+                <input type="number" id="input-lanche-${lanche.id}-valor" value="${lanche.valor}" />
+            `;
+            document.getElementById(`lanche-${lanche.id}-crud`).style = "display: none;";
+            document.getElementById(`lanche-${lanche.id}-save`).style = "";
+        }
+
+        function onDelete(id) {
+            let lanche = lanches.find(lanche => lanche.id === id);
+            let userConf = confirm(`Deseja realmente excluir o lanche ${lanche.nome}?`);
+            if (userConf) {
+                lanches = lanches.filter(lanche => lanche.id !== id);
+                tableLoad();
+            }
         }
 
     </script>
