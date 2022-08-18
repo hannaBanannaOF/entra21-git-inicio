@@ -28,12 +28,33 @@
                     });
             }
         }
+
+        function getMsg() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve("Eu <3 JS!");
+                }, 10000);
+            });
+        }
+
+        async function asyncMsg() {
+            document.getElementById("async")
+                .innerHTML = await getMsg();
+            document.getElementById("async_btn").style = 
+                "display: none;";
+        }
+
+
     </script>
 </head>
 <body>
     <div id="texto"></div>
-    <input type="text" name="teste" id="input-txt">
+    <input type="text" name="teste" id="input-txt" required>
     <button onclick="submitMsg()">Enviar</button>
+
+
+    <div id="async"></div>
+    <button id="async_btn" onclick="asyncMsg()">Mensagem</button>
     
 </body>
 </html>
