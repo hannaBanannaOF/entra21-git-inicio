@@ -1,0 +1,50 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="css/styles.css">    
+    <script type="text/javascript">
+        function loadImg() {
+            let req = new XMLHttpRequest();
+            req.open("GET", "https://dog.ceo/api/breeds/image/random", false);
+            req.send(null);
+            document.getElementsByTagName("img")[0].src = 
+                JSON.parse(req.responseText).message;
+        }
+    </script>
+</head>
+<body>
+    <img src />
+    <button onclick="loadImg()">Get DOG</button>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="css/styles.css">    
+    <script type="text/javascript">
+        function loadCharList() {
+            let req = new XMLHttpRequest();
+            req.open("GET", "http://hp-api.herokuapp.com/api/characters", false);
+            req.send(null);
+            document.getElementById("charlist").innerHTML = 
+                JSON.parse(req.responseText).map(char => `
+                    <li>${char.name}</li>
+                `).join("");
+        }
+    </script>
+</head>
+<body onload="loadCharList()">
+    <ul id="charlist"></ul>
+</body>
+</html>
