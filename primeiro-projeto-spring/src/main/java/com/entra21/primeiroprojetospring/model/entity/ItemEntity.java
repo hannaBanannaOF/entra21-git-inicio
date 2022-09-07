@@ -1,7 +1,5 @@
 package com.entra21.primeiroprojetospring.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -44,4 +42,6 @@ public abstract class ItemEntity {
             inverseJoinColumns = @JoinColumn(name = "id_genero")
     )
     private Set<GeneroEntity> generos;
+
+    public abstract String getType();
 }
