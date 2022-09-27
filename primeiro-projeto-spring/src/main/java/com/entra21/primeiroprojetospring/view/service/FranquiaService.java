@@ -55,4 +55,8 @@ public class FranquiaService {
         dto.setId(e.getId());
         return dto;
     }
+
+    protected FranquiaEntity getFranquiaById(Long idFranquia) {
+        return franquiaRepository.findById(idFranquia).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Franquia não encontrada!"));
+    }
 }

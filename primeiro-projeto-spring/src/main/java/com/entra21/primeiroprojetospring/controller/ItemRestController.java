@@ -1,12 +1,11 @@
 package com.entra21.primeiroprojetospring.controller;
 
+import com.entra21.primeiroprojetospring.model.ETipoItem;
+import com.entra21.primeiroprojetospring.model.dto.ItemDetalhesDTO;
 import com.entra21.primeiroprojetospring.model.dto.ItemListagemDTO;
 import com.entra21.primeiroprojetospring.view.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,7 +18,25 @@ public class ItemRestController {
 
     @GetMapping
     public List<ItemListagemDTO> getAll(
-            @RequestParam(name = "idGenero", required = false) Long idGenero) {
-        return itemService.getAll(idGenero);
+            @RequestParam(name = "titulo", required = false) String titulo,
+            @RequestParam(name = "franquia", required = false) Long idFranquia,
+            @RequestParam(name = "tipo", required = false)ETipoItem tipo
+            ) {
+        return itemService.getAll(titulo, idFranquia, tipo);
+    }
+
+    @GetMapping("/{id}")
+    public ItemDetalhesDTO getById(@PathVariable(name = "id") Long id) {
+        return itemService.getByid(id);
+    }
+
+    @PutMapping("/{id}/emprestar")
+    public void emprestarItem(@PathVariable(name = "id") Long id) {
+        itemService.atualizarStatusEmprestimo(id, true);
+    }
+
+    @PutMapping("/{id}/devolver")
+    public void devolverItem(@PathVariable(name = "id") Long id) {
+        itemService.atualizarStatusEmprestimo(id, false);
     }
 }

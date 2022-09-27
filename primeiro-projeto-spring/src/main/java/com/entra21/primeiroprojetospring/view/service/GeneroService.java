@@ -35,7 +35,7 @@ public class GeneroService {
 
     public GeneroDTO getById(Long id) {
         GeneroEntity e = generoRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Franquia não encontrada!"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Genero não encontrada!"));
         GeneroDTO dto = new GeneroDTO();
         dto.setId(e.getId());
         dto.setNome(e.getNome());
@@ -48,12 +48,17 @@ public class GeneroService {
 
     public GeneroDTO update(Long id, String novoNome) {
         GeneroEntity e = generoRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Franquia não encontrada!"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Genero não encontrada!"));
         e.setNome(novoNome);
         e = generoRepository.save(e);
         GeneroDTO dto = new GeneroDTO();
         dto.setNome(e.getNome());
         dto.setId(e.getId());
         return dto;
+    }
+
+    protected GeneroEntity getGeneroById(Long idGenero) {
+        return generoRepository.findById(idGenero)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Genero não encontrada!"));
     }
 }

@@ -1,5 +1,7 @@
 package com.entra21.primeiroprojetospring.model.entity;
 
+import com.entra21.primeiroprojetospring.model.ETipoItem;
+import com.entra21.primeiroprojetospring.model.dto.ItemDetalhesDTO;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -43,5 +45,7 @@ public abstract class ItemEntity {
     )
     private Set<GeneroEntity> generos;
 
-    public abstract String getType();
+    public abstract ETipoItem getType();
+
+    public abstract ItemDetalhesDTO toDTO();
 }

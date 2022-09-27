@@ -8,5 +8,7 @@ import java.util.List;
 
 @Repository
 public interface ItemRepository extends JpaRepository<ItemEntity, Long> {
-    public List<ItemEntity> findAllByGeneros_Id(Long idGenero);
+    public List<ItemEntity> findAllByTituloContaining(String titulo);
+    public List<ItemEntity> findAllByFranquia_IdAndTituloContaining(Long idFranquia, String titulo);
+    public List<ItemEntity> findAllByFranquia_Id(Long idFranquia);
 }
