@@ -1,0 +1,14 @@
+<div (click)="showID()">
+    <span *ngIf="hero.deceased">♰</span>
+    <h3 [ngStyle]="(hero.deceased) ? {
+        'font-style': 'italic',
+        'text-decoration': 'line-through', 
+        'color': 'gray'} : {}" 
+        style="display: inline; margin-right: 2px;">
+        <!-- {{ (hero.deceased ? '♰' : '') }}{{ hero.heroName }} -->
+        {{ hero.heroName }}
+    </h3>
+    <small [ngStyle]="
+        {'color': (hero.universe === 'DC') ? 'blue' : 'red'}
+    ">({{ hero.universe }})</small>
+</div>
