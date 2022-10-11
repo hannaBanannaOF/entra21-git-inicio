@@ -42,9 +42,15 @@ export class HeroesScreenComponent implements OnInit {
     }
   ];
 
+  inserting = false;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  inserirHeroi = () => {
+    this.inserting = true;
   }
 
 }

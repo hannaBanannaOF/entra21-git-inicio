@@ -1,0 +1,12 @@
+<form [formGroup]="heroForm" 
+style="display: flex; flex-direction: column; width: 25%; gap: 4px;">
+    <label for="name">Name: </label>
+    <input type="text" name="name" id="name" formControlName="name" />
+
+    <label for="secretIdentity">Secret Identity: </label>
+    <input type="text" name="secretIdentity"
+     id="secretIdentity" formControlName="secretIdentity" />
+
+    <button type="submit" [disabled]="!heroForm.valid">Criar</button>
+    <button type="button" (click)="cancel()">Cancelar</button>
+</form>
