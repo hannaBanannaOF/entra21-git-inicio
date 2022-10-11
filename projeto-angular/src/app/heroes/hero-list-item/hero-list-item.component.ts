@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Hero } from '../heroes-screen/heroes-screen.component';
 
 @Component({
@@ -9,7 +9,9 @@ import { Hero } from '../heroes-screen/heroes-screen.component';
 export class HeroListItemComponent implements OnInit {
 
   @Input() hero!: Hero;
-
+  @Output() heroDelete = new EventEmitter<Hero>();
+  @Output() heroEdit = new EventEmitter<number>();
+  
   constructor() { }
 
   ngOnInit(): void {
@@ -17,6 +19,14 @@ export class HeroListItemComponent implements OnInit {
 
   showID = () => {
     alert(this.hero.secretIdentity ?? 'Desconhecido');
+  }
+
+  onDelete = () => {
+    this.heroDelete.emit(this.hero);
+  }
+
+  onEdit = () => {
+    this.heroEdit.emit(this.hero.id);
   }
 
 }

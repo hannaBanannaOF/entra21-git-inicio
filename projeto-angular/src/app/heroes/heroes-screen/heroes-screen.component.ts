@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 export type Hero = {
-  id: number,
+  id?: number,
   heroName: string,
   secretIdentity?: string,
   universe: "marvel" | "DC",
@@ -15,6 +15,8 @@ export type Hero = {
 })
 export class HeroesScreenComponent implements OnInit {
   
+  editingHero: Hero | null | undefined = null;
+
   heroes: Hero[] = [
     {
       id: 1,
@@ -50,6 +52,29 @@ export class HeroesScreenComponent implements OnInit {
   }
 
   inserirHeroi = () => {
+    this.editingHero = null;
+    this.inserting = true;
+  }
+
+  save = (hero: Hero) => {
+    if (hero.id == null) {
+      hero.id = (
+        this.heroes.length > 0 ? 
+        this.heroes.map((h: Hero) => h.id!)
+        .sort()[this.heroes.length-1] : 0)+1
+      this.heroes.push(hero)
+    } else {
+      let pos = this.heroes.findIndex((h: Hero) => h.id! == hero.id!)
+      this.heroes[pos] = hero;
+    }
+  }
+
+  remove = (hero: Hero) => {
+    this.heroes = this.heroes.filter((h: Hero) => h.id! != hero.id!);
+  }
+
+  edit = (heroID: number) => {
+    this.editingHero = this.heroes.find((h: Hero) => h.id! == heroID!);
     this.inserting = true;
   }
 

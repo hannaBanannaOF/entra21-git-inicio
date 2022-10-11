@@ -1,7 +1,7 @@
 <h2>Heroes</h2>
 
 <div *ngFor="let hero of heroes">
-    <app-hero-list-item [hero]="hero"></app-hero-list-item>
+    <app-hero-list-item [hero]="hero" (heroDelete)="remove($event)" (heroEdit)="edit($event)"></app-hero-list-item>
 </div>
 <button type="button" (click)="inserirHeroi()" *ngIf="!inserting">Novo heroi</button>
-<app-heroes-form *ngIf="inserting" (insertChange)="inserting=$event"></app-heroes-form>
+<app-heroes-form [editingHero]="editingHero" *ngIf="inserting" (insertChange)="inserting=$event" (heroSave)="save($event)"></app-heroes-form>
