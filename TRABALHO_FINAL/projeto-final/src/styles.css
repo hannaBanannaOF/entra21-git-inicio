@@ -2,3 +2,7 @@
 .spacer {
     flex: 1
 }
+
+.active-link {
+    color: black!important;
+}

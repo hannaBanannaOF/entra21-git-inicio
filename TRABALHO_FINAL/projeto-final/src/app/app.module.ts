@@ -9,6 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FranquiasScreenComponent } from './franquias-screen/franquias-screen.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     LandingPageComponent,
     DashboardComponent,
+    FranquiasScreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule
   ],
   providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

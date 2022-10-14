@@ -16,13 +16,22 @@
     </div>
 </nav>
 
-<div *ngIf="user != null" class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menu</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" data-bs-dismiss="offcanvas" routerLink="/dashboard">Dashboard</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-dismiss="offcanvas" routerLink="/dashboard/franquias">Franquias</a>
+            </li>
+          </ul>
     </div>
   </div>
-<router-outlet></router-outlet>
+  <div class="container">
+      <router-outlet></router-outlet>
+  </div>

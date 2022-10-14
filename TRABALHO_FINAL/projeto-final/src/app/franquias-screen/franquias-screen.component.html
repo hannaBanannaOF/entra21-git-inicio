@@ -1,0 +1,5 @@
+<h1 class="display-4">Franquias</h1>
+<div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item" *ngFor="let franquia of franquias">{{franquia.nome}}</li>
+</ul>
