@@ -17,7 +17,7 @@ export class LoginComponent {
   });
   loading = false;
   submitted = false;
-  returnUrl: string = this.route.snapshot.queryParams['returnUrl'] || '/';;
+  returnUrl: string = this.route.snapshot.queryParams['returnUrl'];;
   error = '';
 
   constructor(
@@ -47,7 +47,7 @@ export class LoginComponent {
           .pipe(first())
           .subscribe(
               data => {
-                  this.router.navigate([this.returnUrl]);
+                  this.router.navigate([this.returnUrl ?? '/dashboard']);
               },
               error => {
                   this.error = error;

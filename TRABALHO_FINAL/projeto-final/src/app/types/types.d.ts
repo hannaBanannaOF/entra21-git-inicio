@@ -1,8 +1,6 @@
 export type User = {
     id: number;
-    username: string;
+    login: string;
     password: string;
-    firstName: string;
-    lastName: string;
     authdata?: string;
 }

@@ -1,1 +1,28 @@
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" *ngIf="user == null">iBook</a>
+      <a *ngIf="user != null" class="navbar-brand" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" aria-controls="offcanvasMenu">☰ iBook</a>
+      <div id="navbarSupportedContent">
+        <div class="spacer"></div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item" *ngIf="user == null">
+            <a class="nav-link" routerLink="/login">Login/Cadastro</a>
+          </li>
+          <li class="nav-item" *ngIf="user != null">
+            <a class="nav-link" href="#" (click)="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+
+<div *ngIf="user != null" class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menu</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      
+    </div>
+  </div>
 <router-outlet></router-outlet>
