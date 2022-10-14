@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a *ngIf="user" class="navbar-brand" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" aria-controls="offcanvasMenu">☰ iBook</a>
+      <a *ngIf="!user" class="navbar-brand" href="#">iBook</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="spacer"></div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li *ngIf="!user" class="nav-item">
+            <a class="nav-link" routerLink="/">Login/Cadastro</a>
+          </li>
+          <li *ngIf="user" class="nav-item">
+            <a href="#" class="nav-link" (click)="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <div *ngIf="user" class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menu</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      
+    </div>
+  </div>
