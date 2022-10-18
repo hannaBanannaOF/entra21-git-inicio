@@ -1,6 +1,7 @@
 package com.entra21.primeiroprojetospring.controller;
 
 import com.entra21.primeiroprojetospring.model.dto.CadastroDTO;
+import com.entra21.primeiroprojetospring.model.dto.LoginDTO;
 import com.entra21.primeiroprojetospring.model.dto.UserDTO;
 import com.entra21.primeiroprojetospring.view.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,9 @@ public class UserRestController {
     private UserService service;
 
     @PostMapping("/login")
-    public UserDTO login() {
+    public UserDTO login(@RequestBody LoginDTO login) {
         // Se retornar true, login sucesso
-        return new UserDTO(service.getLogado());
+        return new UserDTO(service.getLogin(login));
     }
 
     @PostMapping("/cadastro")

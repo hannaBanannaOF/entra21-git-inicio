@@ -1,6 +1,7 @@
 package com.entra21.primeiroprojetospring.view.service;
 
 import com.entra21.primeiroprojetospring.model.dto.CadastroDTO;
+import com.entra21.primeiroprojetospring.model.dto.LoginDTO;
 import com.entra21.primeiroprojetospring.model.entity.UserEntity;
 import com.entra21.primeiroprojetospring.view.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,13 @@ public class UserService implements UserDetailsService {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public UserEntity getLogin(LoginDTO login) {
+        UserEntity u = userRepository.findByLogin(login.getUsername());
+        if (u.getPassword().equals(login.getPassword())) {
+            return u;
+        }
+        throw new RuntimeException("Senha inválida!");
     }
 }
